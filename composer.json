@@ -1,0 +1,20 @@
+{
+  "name": "oxil/php-travis-influxdb",
+  "version": "0.1",
+  "description": "Read from Travis CI and write build status and metrics into an influxDB database for e.g. use in Grafana",
+  "keywords": [
+    "PHP",
+    "Travis CI",
+    "Influx DB"
+  ],
+
+  "type": "library",
+  "require": {
+    "influxdb/influxdb-php": "^1.15"
+  },
+  "autoload": {
+    "psr-4": {
+      "Oxil\\PHPTravisInflux": "src/"
+    }
+  }
+}
