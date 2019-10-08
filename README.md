@@ -91,6 +91,8 @@ the identifier specified within the **travis** element of the configuration file
 Each measurement entry will be written with a value of **1** always and with the following tags:
 
 - **repo** - the full string of the repository e.g. *OxfordInfoLabs/kinikit-core*
+
+- **short_name** - the short name of the repository (last bit after slashes) e.g. *kinikit-core*
          
 - **status** - the Raw Travis status for the last build (failed,finished etc.)        
 

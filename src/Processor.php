@@ -47,8 +47,11 @@ class Processor {
 
                 }
 
+                // Get the short name from the repo by getting the last fragment.
+                $explodedRepo = explode("/", $repository);
+                $repoShortName = array_pop($explodedRepo);
 
-                $influxWorker->writeMetric($configName, 1, ["repo" => $repository, "status" => $travisStatus["state"],
+                $influxWorker->writeMetric($configName, 1, ["repo" => $repository, "short_name" => $repoShortName, "status" => $travisStatus["state"],
                     "last_run" => $travisStatus["finished_at"]]);
 
             }
