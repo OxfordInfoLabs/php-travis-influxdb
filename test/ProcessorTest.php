@@ -41,13 +41,13 @@ class ProcessorTest extends TestCase {
 
         $this->assertEquals(3, sizeof($points));
 
-        $this->assertEquals("OxfordInfoLabs/kinikit-core", $points[0]["repo"]);
+        $this->assertEquals("OxfordInfoLabs/kinikit-", substr($points[0]["repo"], 0, 23));
         $this->assertNotNull($points[0]["status"]);
 
-        $this->assertEquals("OxfordInfoLabs/kinikit-mvc", $points[1]["repo"]);
+        $this->assertEquals("OxfordInfoLabs/kinikit-", substr($points[1]["repo"], 0, 23));
         $this->assertNotNull($points[1]["status"]);
 
-        $this->assertEquals("OxfordInfoLabs/kinikit-persistence", $points[2]["repo"]);
+        $this->assertEquals("OxfordInfoLabs/kinikit-", substr($points[2]["repo"], 0, 23));
         $this->assertNotNull($points[2]["status"]);
 
     }
@@ -63,9 +63,9 @@ class ProcessorTest extends TestCase {
         $results = $this->database->query("select * from travis_ci_org LIMIT 10");
         $points = $results->getPoints();
         $this->assertEquals(3, sizeof($points));
-        $this->assertEquals("OxfordInfoLabs/kinikit-core", $points[0]["repo"]);
-        $this->assertEquals("OxfordInfoLabs/kinikit-mvc", $points[1]["repo"]);
-        $this->assertEquals("OxfordInfoLabs/kinikit-persistence", $points[2]["repo"]);
+        $this->assertEquals("OxfordInfoLabs/kinikit-", substr($points[0]["repo"], 0, 23));
+        $this->assertEquals("OxfordInfoLabs/kinikit-", substr($points[1]["repo"], 0, 23));
+        $this->assertEquals("OxfordInfoLabs/kinikit-", substr($points[2]["repo"], 0, 23));
 
         // Process again
         $processor->process();
@@ -75,12 +75,12 @@ class ProcessorTest extends TestCase {
         $points = $results->getPoints();
 
         $this->assertEquals(6, sizeof($points));
-        $this->assertEquals("OxfordInfoLabs/kinikit-core", $points[0]["repo"]);
-        $this->assertEquals("OxfordInfoLabs/kinikit-mvc", $points[1]["repo"]);
-        $this->assertEquals("OxfordInfoLabs/kinikit-persistence", $points[2]["repo"]);
-        $this->assertEquals("OxfordInfoLabs/kinikit-core", $points[3]["repo"]);
-        $this->assertEquals("OxfordInfoLabs/kinikit-mvc", $points[4]["repo"]);
-        $this->assertEquals("OxfordInfoLabs/kinikit-persistence", $points[5]["repo"]);
+        $this->assertEquals("OxfordInfoLabs/kinikit-", substr($points[0]["repo"], 0, 23));
+        $this->assertEquals("OxfordInfoLabs/kinikit-", substr($points[1]["repo"], 0, 23));
+        $this->assertEquals("OxfordInfoLabs/kinikit-", substr($points[2]["repo"], 0, 23));
+        $this->assertEquals("OxfordInfoLabs/kinikit-", substr($points[3]["repo"], 0, 23));
+        $this->assertEquals("OxfordInfoLabs/kinikit-", substr($points[4]["repo"], 0, 23));
+        $this->assertEquals("OxfordInfoLabs/kinikit-", substr($points[5]["repo"], 0, 23));
 
 
     }
