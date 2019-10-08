@@ -1,0 +1,18 @@
+{
+  "useBuildTimestamps": true,
+  "influxdb": {
+    "host": "localhost",
+    "port": 8086,
+    "database": "example"
+  },
+  "travis": {
+    "travis_ci_org": {
+      "endpoint": "https://api.travis-ci.org",
+      "repositories": [
+        "OxfordInfoLabs/kinikit-core",
+        "OxfordInfoLabs/kinikit-mvc",
+        "OxfordInfoLabs/kinikit-persistence"
+      ]
+    }
+  }
+}
