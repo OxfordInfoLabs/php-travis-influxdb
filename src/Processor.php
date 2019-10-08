@@ -51,9 +51,11 @@ class Processor {
                 $explodedRepo = explode("/", $repository);
                 $repoShortName = array_pop($explodedRepo);
 
-                $status = isset($travisStatus["result"]) ? ($travisStatus["result"] ? "Failed" : "Succeeded") : "Failed";
+                // Get the raw result and use this as the value
+                $result = $travisStatus["result"] ?? 1 ? 0 : 1;
+                $status = $result ? "Succeeded" : "Failed";
 
-                $influxWorker->writeMetric($configName, 1, ["repo" => $repository, "short_name" => $repoShortName, "status" => $status,
+                $influxWorker->writeMetric($configName, $result, ["repo" => $repository, "short_name" => $repoShortName, "status" => $status,
                     "last_run" => $travisStatus["finished_at"]]);
 
             }

@@ -88,7 +88,8 @@ $processor->process();
 Data read from Travis CI will be inserted into a measurement within the configured database (see above) as identified by 
 the identifier specified within the **travis** element of the configuration file.
 
-Each measurement entry will be written with a value of **1** always and with the following tags:
+Each measurement entry will be written with a value of **0** or **1** according to whether the build failed or succeeded respectively.
+The following tags will also be added to the entry for informational purposes for reporting.
 
 - **repo** - the full string of the repository e.g. *OxfordInfoLabs/kinikit-core*
 
