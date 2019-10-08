@@ -1,6 +1,6 @@
 {
   "name": "oxil/php-travis-influxdb",
-  "version": "0.3",
+  "version": "0.4",
   "description": "Read from Travis CI and write build status and metrics into an influxDB database for e.g. use in Grafana",
   "keywords": [
     "PHP",
