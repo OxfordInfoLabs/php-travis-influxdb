@@ -94,7 +94,7 @@ Each measurement entry will be written with a value of **1** always and with the
 
 - **short_name** - the short name of the repository (last bit after slashes) e.g. *kinikit-core*
          
-- **status** - the Raw Travis status for the last build (failed,finished etc.)        
+- **status** - either *Succeeded* or *Failed* according to the status of the Travis build.  
 
 - **last_run** - the last run time for the build as obtained from Travis.
 

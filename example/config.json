@@ -11,7 +11,8 @@
       "repositories": [
         "OxfordInfoLabs/kinikit-core",
         "OxfordInfoLabs/kinikit-mvc",
-        "OxfordInfoLabs/kinikit-persistence"
+        "OxfordInfoLabs/kinikit-persistence",
+        "OxfordInfoLabs/php-travis-influxdb"
       ]
     }
   }
