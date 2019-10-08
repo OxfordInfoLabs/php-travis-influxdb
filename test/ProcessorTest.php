@@ -70,6 +70,7 @@ class ProcessorTest extends TestCase {
         // Process again
         $processor->process();
 
+        sleep(1);
 
         $results = $this->database->query("select * from travis_ci_org LIMIT 10");
         $points = $results->getPoints();
