@@ -22,7 +22,11 @@ class ProcessorTest extends TestCase {
 
         $influxDb = new Client("localhost");
         $this->database = $influxDb->selectDB("example");
-        $this->database->query("DROP measurement travis_ci_org");
+        try {
+            $this->database->query("DROP measurement travis_ci_org");
+        } catch (\Exception $e) {
+            // No worries.
+        }
     }
 
     public function testCanProcessBasedOnSuppliedConfig() {
