@@ -1,0 +1,12 @@
+sudo: required
+addons:
+  apt:
+    packages:
+      - influxdb
+      
+language: php
+php:
+  - '7.2'
+before_script: composer clearcache; composer install; composer update;  cd test
+script: phpunit .
+

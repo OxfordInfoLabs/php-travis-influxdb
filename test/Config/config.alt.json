@@ -1,5 +1,5 @@
 {
-  "useBuildTimestamps": false,
+  "useBuildTimestamps": true,
   "influxdb": {
     "host": "localhost",
     "port": 8086,

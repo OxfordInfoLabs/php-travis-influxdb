@@ -57,4 +57,16 @@ class InfluxDBWorker {
     }
 
 
+    /**
+     * Get the latest filtered metric
+     *
+     * @param $metric
+     * @param $filters
+     */
+    public function getLatestFilteredMetric($metric, $filterColumn, $filterValue) {
+        $results = $this->influxDatabase->query("SELECT * FROM $metric WHERE $filterColumn = '$filterValue' ORDER BY time DESC LIMIT 1");
+        return $results->getPoints()[0] ?? null;
+    }
+
+
 }

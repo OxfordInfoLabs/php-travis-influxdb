@@ -38,6 +38,16 @@ class Processor {
             foreach ($config["repositories"] as $repository) {
 
                 $travisStatus = $travisCIWorker->getCurrentBuildInfo($repository);
+
+                if ($this->config["useBuildTimestamps"] ?? false) {
+
+                    $latestForRepo = $influxWorker->getLatestFilteredMetric($configName, "repo", $repository);
+                    if ($latestForRepo && $latestForRepo["last_run"] == $travisStatus["finished_at"])
+                        continue;
+
+                }
+
+
                 $influxWorker->writeMetric($configName, 1, ["repo" => $repository, "status" => $travisStatus["state"],
                     "last_run" => $travisStatus["finished_at"]]);
 

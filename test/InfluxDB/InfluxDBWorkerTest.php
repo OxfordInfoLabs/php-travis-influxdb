@@ -25,6 +25,7 @@ class InfluxDBWorkerTest extends TestCase {
 
         $influxDb = new Client("localhost");
         $this->database = $influxDb->selectDB("example");
+        $this->database->create(null);
         $this->database->query("DROP measurement test");
     }
 
