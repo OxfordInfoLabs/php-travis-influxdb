@@ -1,9 +1,3 @@
-sudo: required
-addons:
-  apt:
-    packages:
-      - influxdb
-
 language: php
 php:
   - '7.2'
