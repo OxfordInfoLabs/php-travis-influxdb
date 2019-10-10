@@ -55,6 +55,8 @@ class Processor {
                 $result = $travisStatus["result"] ?? 1 ? 0 : 1;
                 $status = $result ? "Succeeded" : "Failed";
 
+                var_dump($travisStatus);
+
                 $influxWorker->writeMetric($configName, $result, ["repo" => $repository, "short_name" => $repoShortName, "status" => $status,
                     "last_run" => $travisStatus["finished_at"]]);
 
