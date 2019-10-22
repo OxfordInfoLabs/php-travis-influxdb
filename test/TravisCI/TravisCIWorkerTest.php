@@ -22,7 +22,7 @@ class TravisCIWorkerTest extends TestCase {
      */
     public function setUp(): void {
         $config = json_decode(file_get_contents(__DIR__ . "/../Config/config.json"), true);
-        $this->worker = new TravisCIWorker($config["travis"]["travis_ci_org"]["endpoint"]);
+        $this->worker = new TravisCIWorker($config["travis"]["travis_ci_org"]["endpoint"], null);
     }
 
     public function testCanGetCurrentBuildInfoForRepo() {
