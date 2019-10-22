@@ -33,11 +33,12 @@ class Processor {
 
         foreach ($this->config["travis"] as $configName => $config) {
 
-            $travisCIWorker = new TravisCIWorker($config["endpoint"]);
+            $travisCIWorker = new TravisCIWorker($config["endpoint"], $config["accessToken"] ?? null);
 
             foreach ($config["repositories"] as $repository) {
 
                 $travisStatus = $travisCIWorker->getCurrentBuildInfo($repository);
+
 
                 if ($this->config["useBuildTimestamps"] ?? false) {
 

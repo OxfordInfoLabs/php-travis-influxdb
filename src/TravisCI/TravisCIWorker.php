@@ -12,12 +12,18 @@ class TravisCIWorker {
      */
     private $endpoint;
 
+    /**
+     * @var string
+     */
+    private $accessToken;
+
 
     /**
      * Construct with required data.
      */
-    public function __construct($endpoint) {
+    public function __construct($endpoint, $accessToken) {
         $this->endpoint = $endpoint;
+        $this->accessToken = $accessToken;
     }
 
 
@@ -28,8 +34,23 @@ class TravisCIWorker {
      */
     public function getCurrentBuildInfo($repository) {
 
-        $data = file_get_contents($this->endpoint . "/repos/$repository/builds");
-        $data = json_decode($data,true);
+        $header = "User-Agent: MyClient/1.0.0\r\n";
+
+        if ($this->accessToken)
+            $header .= "Authorization: token " . $this->accessToken;
+
+        $opts = [
+            "http" => [
+                "method" => "GET",
+                "header" => $header
+            ]
+        ];
+
+        $context = stream_context_create($opts);
+
+        $data = file_get_contents($this->endpoint . "/repos/$repository/builds",false, $context);
+
+        $data = json_decode($data, true);
 
         return $data[0] ?? [];
 
